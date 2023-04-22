@@ -1,0 +1,59 @@
+PS C:\> & C:/Python27/python.exe c:/WM_Flex/INT_development_Copy/wmflex_April_21/flex_backend_modules/linked_list.py
+0
+
+
+
+>>>> APPEND EXAMPLE
+0
+1
+
+
+
+>>>> APPEND EXAMPLE
+0
+1
+2
+
+
+
+>>>> APPEND EXAMPLE
+0
+1
+2
+3
+
+
+
+>>>> APPEND EXAMPLE
+0
+1
+2
+3
+4
+
+
+
+>>>> POP EXAMPLE
+Removed : <__main__.Node instance at 0x000000000362C9C8>  : value : 4
+0
+1
+2
+3
+
+
+
+>>>> PREPEND EXAMPLE
+10
+0
+1
+2
+3
+
+
+
+>>>> POP FIRST EXAMPLE
+Popped <__main__.Node instance at 0x000000000362C9C8> : 10
+0
+1
+2
+3
