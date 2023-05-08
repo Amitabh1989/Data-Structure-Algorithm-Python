@@ -17,6 +17,7 @@ By: Amitabh Suman (amitabhsuman.ss89@gmail.com)
 
 from typing import Union
 
+# pylint: disable=too-few-public-methods
 class Node:
     """
     Class for creating a new node
@@ -27,6 +28,7 @@ class Node:
         self.value = value
         self.next = None
 
+    # pylint: disable:superfluous-parens
     def __repr__(self) -> str:
         return (f"{self.value}")
 
@@ -105,6 +107,7 @@ class LinkedList:
         self.length += 1
         return True
 
+    # pylint: disable=inconsistent-return-statements
     def pop(self) -> Union[None, Node]:
         """
         Pops the element from end of the list.
@@ -170,6 +173,7 @@ class LinkedList:
 
         self.length += 1
 
+    # pylint: disable=inconsistent-return-statements
     def pop_first(self) -> Union[None, Node]:
         """
         1. Checks if the list is none, return None
