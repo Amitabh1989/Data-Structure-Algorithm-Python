@@ -6,11 +6,13 @@ A brief overview of LinkedList using Python.
 Amitabh Suman
 """
 
+
 class Node:
     """
     Class for creating a new node
     Seperate class for SRP : Single Responsibility Principle
     """
+
     def __init__(self, value):
         self.value = value
         self.next = None
@@ -25,6 +27,7 @@ class LinkedList:
     4. Method to pop from first
     5. Method to prepend
     """
+
     def __init__(self, value):
         """
         Creates a new node and inits head, tail and length of the new Linked List
@@ -43,7 +46,36 @@ class LinkedList:
             print(temp.value)
             temp = temp.next
         print("\n\n")
-    
+
+    def get(self, index):
+        """
+        Get the node at index from the linked list
+        3 conditions are checked here is
+        1. If thr index passes is valid
+        2. If the index asked is 0 (not entirely necessary though)
+        3. If its a index within range
+        """
+        if index < 0 or index > self.length:
+            return None
+
+        if index == 0:
+            return self.head
+
+        temp = self.head
+        for _ in range(index):
+            temp = temp.next
+        return temp
+
+    def set_value(self, index, value):
+        """
+        Set value of certain index to the passed on value
+        """
+        temp = self.get(index)
+        if temp:
+            temp.value = value
+            return True
+        return False
+
     def append(self, value):
         """
         Create a new node and appends to endof the list
@@ -84,7 +116,7 @@ class LinkedList:
         else:
             if self.length == 0:
                 return None
-            
+
             temp = self.head
             pre = self.head
             while temp.next:
@@ -94,20 +126,20 @@ class LinkedList:
             self.tail = pre
             self.tail.next = None
             self.length -= 1
-            
+
             if self.head == self.tail:
                 print("Popped value : {}".format(self.head.value))
                 self.head = None
                 self.tail = None
                 return
-            
+
             print("Removed : {}  : value : {}".format(temp, temp.value))
             return temp
 
     def prepend(self, value):
         """
         1. Create a new node.
-        2. Checks if the list is none. 
+        2. Checks if the list is none.
         3. If 2 : then assign head and tail to new node and tail.next to none
         4. if not 2 : store head to a pre variable. Assign head to new node
         5. head.next to pre
@@ -123,7 +155,7 @@ class LinkedList:
             pre = self.head
             self.head = new_node
             self.head.next = pre
-        
+
         self.length += 1
 
     def pop_first(self):
@@ -137,13 +169,13 @@ class LinkedList:
         """
         if self.head == None:
             return None
-        
+
         if self.length == 1:
             self.head = None
             self.tail = None
             self.length = 0
             return None
-        
+
         if self.length > 1:
             temp = self.head
             self.head = self.head.next
@@ -152,7 +184,83 @@ class LinkedList:
             print("Popped {} : {}".format(temp, temp.value))
             return temp
 
-# Try belows
+    def insert(self, index, value):
+        """
+        Function to insert a value at given index. Few conditions that can be checked for implementation
+        1. Check if insert is right at the begining or end
+        2. If no, the traverse till the index and insert
+        """
+        if index > self.length or index < 0:
+            print("Index out of range")
+            return False
+
+        if index == 0:
+            # Check if the index is 0. If so, invoke the prepend method which will check for the status of the list
+            # Performs checks related to Empty list and so on.
+            return self.prepend(value)
+
+        if index == self.length:
+            # User intends to insert at end of the list.
+            # Used the append function
+            return self.append(value)
+
+        new_node = Node(value)
+        temp = self.get(index - 1)
+        new_node.next = temp.next
+        temp.next = new_node
+        self.length += 1
+        return True
+
+    def remove(self, index):
+        """
+        Remove by index. Things we have considered here are:
+        1. Check for index validity
+        2. If we have index at 0 or at end, we have methods to remove them already
+        3. If index is in range, we remove it by retriving the index-1 node and applying as below.
+        """
+        if index < 0 or index > self.length:
+            return None
+
+        if index == 0:
+            self.pop_first()
+
+        if index == self.length - 1:
+            self.pop()
+
+        prev = self.get(index - 1)
+        # Since get is O(n), using prev to retrieve the temp value
+        temp = prev.next
+        prev.next = temp.next
+        temp.next = None
+        self.length -= 1
+        return temp
+
+    def reverse(self):
+        """
+        Most common DSA question. The order of the code matters here a lot. So small explanation as below
+        1. First reverse the Head and Tail node
+        2. Take 2 variables: before and after
+        3. before is none and after is temp.next
+        4. Iterate through the linked list and in below order, reverse the list
+        5. First after = temp.next
+        6. Then temp.next = before
+        7. Then before = temp
+        8. Then temp = after 
+        """
+        temp = self.head
+        self.head = self.tail
+        self.tail = temp
+        after = temp.next
+        before = None
+
+        for _ in range(self.length):
+            after = temp.next
+            temp.next = before
+            before = temp
+            temp = after
+
+
+# Try below
 
 j = LinkedList(0)
 j.print_list()
@@ -169,20 +277,30 @@ j.print_list()
 j.append(4)
 j.print_list()
 
+print("Checking Pop")
 j.pop()
 j.print_list()
 
-# j.pop()
-# j.print_list()
-# j.pop()
-# j.print_list()
-# j.pop()
-# j.print_list()
-# j.pop()
-# j.print_list()
-
+print("Checking Prepend")
 j.prepend(10)
 j.print_list()
 
+print("Checking Pop")
 j.pop_first()
+j.print_list()
+
+print("Checking Insert")
+j.insert(2, 10)
+j.print_list()
+
+print("Checking Get")
+j.get(2)
+j.print_list()
+
+print("Checking Set")
+j.set_value(2, 4)
+j.print_list()
+
+print("Checking Remove")
+j.remove(2)
 j.print_list()
