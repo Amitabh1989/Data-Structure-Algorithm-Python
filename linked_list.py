@@ -27,9 +27,7 @@ class Node:
     def __init__(self, value):
         self.value = value
         self.next = None
-
-    def __repr__(self) -> str:
-        return (f"{self.value}")  # pylint: disable:superfluous-parens
+        
 
 class LinkedList:
     """
