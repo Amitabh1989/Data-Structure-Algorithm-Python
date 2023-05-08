@@ -250,7 +250,7 @@ class LinkedList:
         temp = self.head
         self.head = self.tail
         self.tail = temp
-        after = temp.next
+        after = None
         before = None
 
         for _ in range(self.length):
