@@ -1,11 +1,21 @@
 """
 Data Structures and Algorithms
 
-A brief overview of LinkedList using Python.
+A brief overview of LinkedList using Python. Below are the methods implemented
+1. pop
+2. pop_first
+3. get
+4. set_value
+5. append
+6. prepend
+7. insert
+8. remove
+9. reverse
 
-Amitabh Suman
+By: Amitabh Suman (amitabhsuman.ss89@gmail.com)
 """
 
+from typing import Union
 
 class Node:
     """
@@ -17,6 +27,8 @@ class Node:
         self.value = value
         self.next = None
 
+    def __repr__(self) -> str:
+        return (f"{self.value}")
 
 class LinkedList:
     """
@@ -28,7 +40,7 @@ class LinkedList:
     5. Method to prepend
     """
 
-    def __init__(self, value):
+    def __init__(self, value: int) -> None:
         """
         Creates a new node and inits head, tail and length of the new Linked List
         """
@@ -47,7 +59,7 @@ class LinkedList:
             temp = temp.next
         print("\n\n")
 
-    def get(self, index):
+    def get(self, index: int) -> Union[None, Node]:
         """
         Get the node at index from the linked list
         3 conditions are checked here is
@@ -66,7 +78,7 @@ class LinkedList:
             temp = temp.next
         return temp
 
-    def set_value(self, index, value):
+    def set_value(self, index: int, value: int) -> bool:
         """
         Set value of certain index to the passed on value
         """
@@ -76,7 +88,7 @@ class LinkedList:
             return True
         return False
 
-    def append(self, value):
+    def append(self, value: int) -> bool:
         """
         Create a new node and appends to endof the list
         Checks if the list was empty. If so, assigns head and tail with new node
@@ -93,7 +105,7 @@ class LinkedList:
         self.length += 1
         return True
 
-    def pop(self):
+    def pop(self) -> Union[None, Node]:
         """
         Pops the element from end of the list.
         Conditions checked are:
@@ -128,15 +140,15 @@ class LinkedList:
         self.length -= 1
 
         if self.head == self.tail:
-            print("Popped value : {}".format(self.head.value))
+            print(f"Popped value : {self.head.value}")
             self.head = None
             self.tail = None
             return
 
-        print("Removed : {}  : value : {}".format(temp, temp.value))
+        print(f"Removed value : {temp}  : value : {temp.value}")
         return temp
 
-    def prepend(self, value):
+    def prepend(self, value: int) -> None:
         """
         1. Create a new node.
         2. Checks if the list is none.
@@ -158,7 +170,7 @@ class LinkedList:
 
         self.length += 1
 
-    def pop_first(self):
+    def pop_first(self) -> Union[None, Node]:
         """
         1. Checks if the list is none, return None
         2. If len of list is 1 : make head and tail as none and lenght as 0
@@ -181,10 +193,10 @@ class LinkedList:
             self.head = self.head.next
             self.length -= 1
             temp.next = None
-            print("Popped {} : {}".format(temp, temp.value))
+            print(f"Popped {temp} : {temp.value}")
             return temp
 
-    def insert(self, index, value):
+    def insert(self, index: int, value: int) -> Union[bool, None, Node]:
         """
         Function to insert a value at given index.
         Few conditions that can be checked for implementation
@@ -213,7 +225,7 @@ class LinkedList:
         self.length += 1
         return True
 
-    def remove(self, index):
+    def remove(self, index: int) -> Union[None, Node]:
         """
         Remove by index. Things we have considered here are:
         1. Check for index validity
@@ -237,7 +249,7 @@ class LinkedList:
         self.length -= 1
         return temp
 
-    def reverse(self):
+    def reverse(self) -> None:
         """
         Most common DSA question. The order of the code matters here a lot.
         So small explanation as below
