@@ -28,9 +28,8 @@ class Node:
         self.value = value
         self.next = None
 
-    # pylint: disable:superfluous-parens
     def __repr__(self) -> str:
-        return (f"{self.value}")
+        return (f"{self.value}")  # pylint: disable:superfluous-parens
 
 class LinkedList:
     """
