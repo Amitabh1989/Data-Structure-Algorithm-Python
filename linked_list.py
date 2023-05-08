@@ -102,7 +102,8 @@ class LinkedList:
             1. pre and temp
             2. pre is temp to start with
             3. While temp.next is not none, in loop : assign pre = temp and temp = temp.next
-            4. Once loop exits (O(n)) : pre points to last temp, before the None (temp points to this node)
+            4. Once loop exits (O(n)) : pre points to last temp, before the None
+              (temp points to this node)
             5. Assign tail to pre and tail.next to none
             6. Reduce the length by 1
         """
@@ -113,28 +114,27 @@ class LinkedList:
             return None
 
         # remove the last element
-        else:
-            if self.length == 0:
-                return None
+        if self.length == 0:
+            return None
 
-            temp = self.head
-            pre = self.head
-            while temp.next:
-                pre = temp
-                temp = temp.next
+        temp = self.head
+        pre = self.head
+        while temp.next:
+            pre = temp
+            temp = temp.next
 
-            self.tail = pre
-            self.tail.next = None
-            self.length -= 1
+        self.tail = pre
+        self.tail.next = None
+        self.length -= 1
 
-            if self.head == self.tail:
-                print("Popped value : {}".format(self.head.value))
-                self.head = None
-                self.tail = None
-                return
+        if self.head == self.tail:
+            print("Popped value : {}".format(self.head.value))
+            self.head = None
+            self.tail = None
+            return
 
-            print("Removed : {}  : value : {}".format(temp, temp.value))
-            return temp
+        print("Removed : {}  : value : {}".format(temp, temp.value))
+        return temp
 
     def prepend(self, value):
         """
@@ -167,7 +167,7 @@ class LinkedList:
         5. Make temp.next = None
         6. Decrease lenght by 1
         """
-        if self.head == None:
+        if self.head is None:
             return None
 
         if self.length == 1:
@@ -186,7 +186,8 @@ class LinkedList:
 
     def insert(self, index, value):
         """
-        Function to insert a value at given index. Few conditions that can be checked for implementation
+        Function to insert a value at given index.
+        Few conditions that can be checked for implementation
         1. Check if insert is right at the begining or end
         2. If no, the traverse till the index and insert
         """
@@ -195,7 +196,8 @@ class LinkedList:
             return False
 
         if index == 0:
-            # Check if the index is 0. If so, invoke the prepend method which will check for the status of the list
+            # Check if the index is 0. If so, invoke the prepend method
+            # which will check for the status of the list
             # Performs checks related to Empty list and so on.
             return self.prepend(value)
 
@@ -237,7 +239,8 @@ class LinkedList:
 
     def reverse(self):
         """
-        Most common DSA question. The order of the code matters here a lot. So small explanation as below
+        Most common DSA question. The order of the code matters here a lot.
+        So small explanation as below
         1. First reverse the Head and Tail node
         2. Take 2 variables: before and after
         3. before is none and after is temp.next
@@ -250,7 +253,7 @@ class LinkedList:
         temp = self.head
         self.head = self.tail
         self.tail = temp
-        after = temp.next
+        after = None
         before = None
 
         for _ in range(self.length):
