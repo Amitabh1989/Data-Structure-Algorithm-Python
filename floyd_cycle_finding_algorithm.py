@@ -30,7 +30,7 @@ Pseudocode:
 by Amitabh Suman
 """
 
-
+# pylint: disable=too-few-public-methods
 class Node:
     """
     Class for creating a new node
@@ -76,7 +76,12 @@ class LinkedList:
         return True
 
     # WRITE HAS_LOOP METHOD HERE #
+    # pylint: disable=inconsistent-return-statements
     def has_loop(self):
+        """
+        Checks if the linked list has loops within
+        :return: bool
+        """
         slow = self.head
         fast = self.head
 
@@ -89,7 +94,7 @@ class LinkedList:
 
                 if slow == fast:
                     print(f"Slow is : {slow.value}, Fast is {fast.value}")
-                    print(f"Loop exists")
+                    print("Loop exists")
                     return True
             return False
     ##############################
@@ -100,6 +105,7 @@ my_linked_list_1.append(2)
 my_linked_list_1.append(3)
 my_linked_list_1.append(4)
 my_linked_list_1.tail.next = my_linked_list_1.head
+# pylint disable=pointless-string-statement
 print(my_linked_list_1.has_loop())  # Returns True
 
 my_linked_list_2 = LinkedList(1)
