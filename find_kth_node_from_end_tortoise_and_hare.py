@@ -72,7 +72,7 @@ class LinkedList:
 
 
 #### WRITE FIND_KTH_FROM_END FUNCTION HERE ####
-# pylint: disable invalid-name
+# pylint: disable=invalid-name
 def find_kth_from_end(ll, k):
     """
     Initialize both slow and fast pointers to head
