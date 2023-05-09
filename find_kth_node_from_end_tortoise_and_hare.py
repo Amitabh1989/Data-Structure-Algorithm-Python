@@ -1,26 +1,29 @@
 """
 DATA STRUCTURES AND ALGORITHMS : TORTOISE AND HARE PROBLEM -or- TWO POINTER
 
-This code defines a function find_kth_from_end(ll, k) that finds the k-th node from the end of a linked list.
-The function takes two arguments, ll representing the linked list and k representing the position of the node
+This code defines a function find_kth_from_end(ll, k) that finds the k-th
+node from the end of a linked list. The function takes two arguments, ll
+ representing the linked list and k representing the position of the node
 to be found from the end.
 
-The function initializes two pointers, slow and fast, both initially pointing to the head of the linked list.
+The function initializes two pointers, slow and fast, both initially
+pointing to the head of the linked list.
 
-It then moves the fast pointer k nodes ahead in the list. If fast becomes None before moving k steps,
-it means the list is shorter than k nodes, and the function returns None.
+It then moves the fast pointer k nodes ahead in the list.
+If fast becomes None before moving k steps, it means the list is shorter
+than k nodes, and the function returns None.
 
-Once the fast pointer is k nodes ahead, the function enters a loop that continues until the fast pointer reaches the
-end of the list.
+Once the fast pointer is k nodes ahead, the function enters a loop that
+continues until the fast pointer reaches the end of the list.
 
-Inside the loop, both the slow and fast pointers move one node forward at each iteration.
+Inside the loop, both the slow and fast pointers move one node forward
+at each iteration. When the fast pointer reaches the end of the list,
+the slow pointer will be at the k-th node from the end of the list. The
+function returns the slow pointer, which points to the k-th node from the end.
 
-When the fast pointer reaches the end of the list, the slow pointer will be at the k-th node from the end of the list.
-
-The function returns the slow pointer, which points to the k-th node from the end.
-
-This algorithm is known as the "tortoise and hare" or "two-pointer" technique and allows us to find the k-th node
-from the end of a singly linked list in a single pass with O(n) time complexity.
+This algorithm is known as the "tortoise and hare" or "two-pointer" technique
+and allows us to find the k-th node from the end of a singly linked list in a
+single pass with O(n) time complexity.
 
 by Amitabh Suman
 """
@@ -59,7 +62,7 @@ class LinkedList:
         Return True (optional return)
         """
         new_node = Node(value)
-        if self.head == None:
+        if self.head is None:
             self.head = new_node
             self.tail = new_node
         else:
@@ -69,8 +72,11 @@ class LinkedList:
 
 
 #### WRITE FIND_KTH_FROM_END FUNCTION HERE ####
+# pylint: disable invalid-name
 def find_kth_from_end(ll, k):
-    # Initialize both slow and fast pointers to head
+    """
+    Initialize both slow and fast pointers to head
+    """
     slow = fast = ll.head
     # Move the fast pointer k nodes ahead
     for _ in range(k):
