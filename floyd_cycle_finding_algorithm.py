@@ -36,6 +36,7 @@ by Amitabh Suman
 """
 
 # pylint: disable=too-few-public-methods
+# pylint: disable=R0801
 class Node:
     """
     Class for creating a new node

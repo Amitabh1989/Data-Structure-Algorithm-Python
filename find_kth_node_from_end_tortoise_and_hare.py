@@ -28,7 +28,9 @@ single pass with O(n) time complexity.
 by Amitabh Suman
 """
 
+
 # pylint: disable=too-few-public-methods
+# pylint: disable=R0801
 class Node:
     """
     Class for creating a new node
@@ -46,6 +48,7 @@ class LinkedList:
     1. Create Head and Tail of linked list
     2. Method to append new node
     """
+
     def __init__(self, value):
         """
         Creates a new node and inits head, tail and length of the new Linked List
