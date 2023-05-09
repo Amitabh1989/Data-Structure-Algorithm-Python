@@ -105,7 +105,6 @@ my_linked_list_1.append(2)
 my_linked_list_1.append(3)
 my_linked_list_1.append(4)
 my_linked_list_1.tail.next = my_linked_list_1.head
-# pylint disable=pointless-string-statement
 print(my_linked_list_1.has_loop())  # Returns True
 
 my_linked_list_2 = LinkedList(1)
@@ -114,6 +113,7 @@ my_linked_list_2.append(3)
 my_linked_list_2.append(4)
 print(my_linked_list_2.has_loop())  # Returns False
 
+# pylint disable=pointless-string-statement
 """
     EXPECTED OUTPUT:
     ----------------
