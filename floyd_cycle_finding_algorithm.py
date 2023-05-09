@@ -30,6 +30,7 @@ Pseudocode:
 by Amitabh Suman
 """
 
+
 class Node:
     """
     Class for creating a new node
@@ -39,13 +40,15 @@ class Node:
     def __init__(self, value):
         self.value = value
         self.next = None
-        
+
+
 class LinkedList:
     """
     Class that contains all the functionality related to a Linked List
     1. Create Head and Tail of linked list
     2. Method to append new node
     """
+
     def __init__(self, value):
         """
         Creates a new node and inits head, tail and length of the new Linked List
@@ -76,14 +79,14 @@ class LinkedList:
     def has_loop(self):
         slow = self.head
         fast = self.head
-        
+
         if self.head:
             # while fast.next is not None:
             # for i in range(self.length):
             while fast is not None and fast.next is not None:
                 slow = slow.next
                 fast = fast.next.next
-                
+
                 if slow == fast:
                     print(f"Slow is : {slow.value}, Fast is {fast.value}")
                     print(f"Loop exists")
@@ -91,18 +94,19 @@ class LinkedList:
             return False
     ##############################
 
+
 my_linked_list_1 = LinkedList(1)
 my_linked_list_1.append(2)
 my_linked_list_1.append(3)
 my_linked_list_1.append(4)
 my_linked_list_1.tail.next = my_linked_list_1.head
-print(my_linked_list_1.has_loop() )  # Returns True
+print(my_linked_list_1.has_loop())  # Returns True
 
 my_linked_list_2 = LinkedList(1)
 my_linked_list_2.append(2)
 my_linked_list_2.append(3)
 my_linked_list_2.append(4)
-print(my_linked_list_2.has_loop() )  # Returns False
+print(my_linked_list_2.has_loop())  # Returns False
 
 """
     EXPECTED OUTPUT:
