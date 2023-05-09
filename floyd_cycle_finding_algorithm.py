@@ -27,6 +27,11 @@ Pseudocode:
 4. If both pointers meet at some point then a loop exists and if the fast
    pointer meets the end position then no loop exists.
 
+    EXPECTED OUTPUT:
+    ----------------
+    True
+    False
+
 by Amitabh Suman
 """
 
@@ -112,12 +117,3 @@ my_linked_list_2.append(2)
 my_linked_list_2.append(3)
 my_linked_list_2.append(4)
 print(my_linked_list_2.has_loop())  # Returns False
-
-# pylint disable=pointless-string-statement
-"""
-    EXPECTED OUTPUT:
-    ----------------
-    True
-    False
-    
-"""
